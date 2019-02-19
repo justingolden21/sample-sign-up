@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sign Up - Sample</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+
+<style type="text/css">
+
+* {
+	text-align: center !important;
+}
+body {
+	background-color: #333;
+	font-family: Helvetica;
+	margin: 50px;
+}
+::-moz-selection {
+	background: #999;
+}
+::selection {
+	background: #999;
+}
+label {
+	letter-spacing: 5px;
+}
+label .label-text, .form-label {
+	color: #999;
+	cursor: text;
+	font-size: 24px;
+	line-height: 24px;
+	transform: translateY(-60px);
+	transition: all 0.4s;
+}
+.form-label {
+	color: #4ad;
+}
+input {
+	background-color: transparent;
+	outline: 0;
+	border: 0;
+	border-bottom: 2px solid #666;
+	color: #fff;
+	font-size: 36px;
+	font-weight: 600;
+	padding: 5px 20px;
+	transition: all 0.4s;
+	width: 200px;
+}
+button {
+	background-color: #333;
+	border: 2px solid #4ad;
+	border-radius: 40px !important;
+	color: #4ad;
+	cursor: pointer;
+	font-size: 20px;
+	padding: 15px 30px;
+	transition: all 0.4s;
+}
+button:disabled {
+	border-color: #999;
+	color: #999;
+}
+
+/* focusing input */
+input:focus {
+	width: 300px;
+}
+input:focus + .label-text {
+	color: #4ad;
+}
+
+/* focusing or value exists */
+input:focus + .label-text, input.value-exists + .label-text {
+	font-size: 16px;
+	transform: translateY(-100px);
+}
+
+/* hover or focus */
+button:hover:not(:disabled), button:focus {
+	background-color: #4ad;
+	color: #333;
+	outline: 0;
+}
+</style>
+
+</head>
+<body>
+
+<br>
+
+<p class="form-label">SIGN UP</p>
+
+<br>
+
+<div class="row">
+
+	<div class="col-lg-2"></div>
+
+	<div class="col-lg-4 col-md-6">
+		<label>
+			<input type="text" spellcheck="false">
+			<p class="label-text"><i class="fas fa-user"></i> FIRST NAME</p>
+		</label>
+	</div>
+
+	<div class="col-lg-4 col-md-6">
+		<label>
+			<input type="text" spellcheck="false">
+			<p class="label-text"><i class="fas fa-user"></i> LAST NAME</p>
+		</label>
+	</div>
+
+	<div class="col-lg-2"></div>
+
+	<!--  -->
+
+	<div class="col-lg-2"></div>
+
+	<div class="col-lg-4 col-md-6">
+		<label>
+			<input type="email" spellcheck="false">
+			<p class="label-text"><i class="fas fa-envelope"></i> EMAIL</p>
+		</label>
+	</div>
+
+	<div class="col-lg-4 col-md-6">
+		<label>
+			<input type="password" spellcheck="false" minlength="6">
+			<p class="label-text"><i class="fas fa-key"></i> PASSWORD</p>
+		</label>
+	</div>
+
+	<div class="col-lg-2"></div>
+
+</div>
+
+<br>
+
+<button disabled="true">SUBMIT</button>
+
+<script type="text/javascript">
+
+$(function() {
+
+	$('label input').keyup(labelChange);
+	$('label input').change(labelChange);
+
+	function labelChange() {
+		if(this.value)
+			this.classList.add('value-exists');
+		else
+			this.classList.remove('value-exists');
+
+		let formDone = $('label input').length == $('.value-exists').length;
+		$('button').prop('disabled', !formDone);
+
+	};
+
+	$('input')[0].select();
+
+});
+
+</script>
+
+<!-- modeled off https://codepen.io/robcampo/pen/qdzGmW -->
+
+</body>
+</html>
